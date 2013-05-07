@@ -8,7 +8,7 @@
 //User specified version info of this build to display in [Pronterface, etc] terminal window during startup.
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to this build by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "MendelMax_2-0_RAMBo_1-1b_GLCD_v1 on " __DATE__ " " __TIME__ // build date and time
+#define STRING_VERSION_CONFIG_H "MendelMax_2-0_RAMBo_1-1b on " __DATE__ " " __TIME__ // build date and time
 #define STRING_CONFIG_H_AUTHOR "Maker's Tool Works" //Who made the changes.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
@@ -283,7 +283,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // default settings 
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,1600,460}  // default steps per unit for ultimaker
-#define DEFAULT_MAX_FEEDRATE          {500, 500, 10, 25}    // (mm/sec)
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 7.5, 25}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {5000,5000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
@@ -336,7 +336,7 @@ const bool Z_ENDSTOPS_INVERTING = true; // set to true to invert the logic of th
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
 // ==> REMEMBER TO INSTALL U8glib to your ARDUINO library folder: http://code.google.com/p/u8glib/wiki/u8glib
-#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+// #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //automatic expansion
 #if defined (REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER)
