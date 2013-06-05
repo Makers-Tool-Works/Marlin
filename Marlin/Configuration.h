@@ -90,7 +90,7 @@
 #define TEMP_SENSOR_BED 60
 
 // Actual temperature must be close to target for this long before M109 returns success
-#define TEMP_RESIDENCY_TIME 10	// (seconds)
+#define TEMP_RESIDENCY_TIME 5	// (seconds)
 #define TEMP_HYSTERESIS 3       // (degC) range of +/- temperatures considered "close" to the target one
 #define TEMP_WINDOW     1       // (degC) Window around target to start the recidency timer x degC early.
 
