@@ -1679,8 +1679,39 @@
 #define LED_PIN            13
 #define FAN_PIN            8
 #define PS_ON_PIN          4
-#define KILL_PIN           -1
+#define KILL_PIN           80
 #define SUICIDE_PIN        -1  //PIN that has to be turned on right after start, to keep power flowing.
+
+//LCD and SD support
+// #define ULTRA_LCD  //general lcd support, also 16x2
+// #define SDSUPPORT // Enable SD Card Support in Hardware Console
+// #define ULTIMAKERCONTROLLER //as available from the ultimaker online store.
+#define ULTIPANEL  //the ultipanel as on thingiverse
+#ifdef ULTIMAKERCONTROLLER    //automatic expansion
+ #define ULTIPANEL
+ #define NEWPANEL
+#endif 
+
+#ifdef ULTIPANEL
+#define NEWPANEL  //enable this if you have a click-encoder panel
+  #define SDSUPPORT
+  #define ULTRA_LCD
+  #define LCD_WIDTH 20
+  #define LCD_HEIGHT 4
+ 
+// Preheat Constants
+  #define PLA_PREHEAT_HOTEND_TEMP 170 
+  #define PLA_PREHEAT_HPB_TEMP 60
+  #define PLA_PREHEAT_FAN_SPEED 0    // Insert Value between 0 and 255
+  #define ABS_PREHEAT_HOTEND_TEMP 240
+  #define ABS_PREHEAT_HPB_TEMP 100
+  #define ABS_PREHEAT_FAN_SPEED 255    // Insert Value between 0 and 255
+#else //no panel but just lcd 
+  #ifdef ULTRA_LCD
+    #define LCD_WIDTH 16
+    #define LCD_HEIGHT 2    
+  #endif
+#endif
 
 #endif
 
