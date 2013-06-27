@@ -1385,6 +1385,37 @@ pins
 #define DIO69_DDR		DDRK
 #define DIO69_PWM		NULL
 
+#define DIO70_PIN       PING4
+#define DIO70_RPORT     PING
+#define DIO70_WPORT     PORTG
+#define DIO70_DDR       DDRG
+#define DIO70_PWM       NULL
+#define DIO71_PIN       PING3
+#define DIO71_RPORT     PING
+#define DIO71_WPORT     PORTG
+#define DIO71_DDR       DDRG
+#define DIO71_PWM       NULL
+#define DIO72_PIN       PINJ2
+#define DIO72_RPORT     PINJ
+#define DIO72_WPORT     PORTJ
+#define DIO72_DDR       DDRJ
+#define DIO72_PWM       NULL
+#define DIO73_PIN       PINJ3
+#define DIO73_RPORT     PINJ
+#define DIO73_WPORT     PORTJ
+#define DIO73_DDR       DDRJ
+#define DIO73_PWM       NULL
+#define DIO74_PIN       PINJ7
+#define DIO74_RPORT     PINJ
+#define DIO74_WPORT     PORTJ
+#define DIO74_DDR       DDRJ
+#define DIO74_PWM       NULL
+#define DIO75_PIN       PINJ4
+#define DIO75_RPORT     PINJ
+#define DIO75_WPORT     PORTJ
+#define DIO75_DDR       DDRJ
+#define DIO75_PWM       NULL
+
 #define DIO76_PIN    PINJ5
 #define DIO76_RPORT  PINJ
 #define DIO76_WPORT  PORTJ
@@ -1415,6 +1446,8 @@ pins
 #define DIO81_WPORT  PORTD
 #define DIO81_DDR    DDRD
 #define DIO81_PWM    NULL
+
+
 
 #undef PA0
 #define PA0_PIN			PINA0
