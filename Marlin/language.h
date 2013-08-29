@@ -1,4 +1,4 @@
-#ifndef LANGUAGE_H
+﻿#ifndef LANGUAGE_H
 #define LANGUAGE_H
 
 // NOTE: IF YOU CHANGE THIS FILE / MERGE THIS FILE WITH CHANGES
@@ -29,6 +29,9 @@
 #elif MOTHERBOARD == 80
 	#define MACHINE_NAME "Rumba"
 	#define FIRMWARE_URL "https://github.com/ErikZalm/Marlin/"
+#elif MOTHERBOARD == 301
+	#define MACHINE_NAME "MendelMax"
+	#define FIRMWARE_URL "https://www.makerstoolworks.com"
 #else
 	#define MACHINE_NAME "Mendel"
 	#define FIRMWARE_URL "http://www.mendel-parts.com"
