@@ -1,4 +1,4 @@
-#ifndef LANGUAGE_H
+﻿#ifndef LANGUAGE_H
 #define LANGUAGE_H
 
 // NOTE: IF YOU CHANGE THIS FILE / MERGE THIS FILE WITH CHANGES
@@ -32,6 +32,9 @@
 #elif MOTHERBOARD == 77
 	#define MACHINE_NAME "3Drag"
 	#define FIRMWARE_URL "http://3dprint.elettronicain.it/"
+#elif MOTHERBOARD == 301
+	#define MACHINE_NAME "MendelMax"
+	#define FIRMWARE_URL "https://www.makerstoolworks.com"
 #else
 	#ifdef CUSTOM_MENDEL_NAME
 		#define MACHINE_NAME CUSTOM_MENDEL_NAME
