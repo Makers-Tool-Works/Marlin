@@ -15,7 +15,7 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "Fusematic Standard on " __DATE__ " " __TIME__ // build date and time
+#define STRING_VERSION_CONFIG_H "Fusematic E3D GLCD on " __DATE__ " " __TIME__ // build date and time
 #define STRING_CONFIG_H_AUTHOR "Maker's Tool Works edited Feb 16, 2014" // Who made the changes.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
@@ -146,7 +146,7 @@
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-#define HEATER_0_MAXTEMP 245
+#define HEATER_0_MAXTEMP 305
 #define HEATER_1_MAXTEMP 275
 #define HEATER_2_MAXTEMP 275
 #define BED_MAXTEMP 150
