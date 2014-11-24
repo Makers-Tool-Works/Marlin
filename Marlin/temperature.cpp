@@ -33,6 +33,7 @@
 #include "ultralcd.h"
 #include "temperature.h"
 #include "watchdog.h"
+#include "mtwled.h"
 
 //===========================================================================
 //=============================public variables============================
@@ -506,6 +507,13 @@ void manage_heater()
       }
     #endif
   } // End extruder for loop
+
+#ifdef MTWLED
+#ifndef MTWLED_disableheatup
+  MTWLEDTemp();
+#endif
+#endif
+
 
   #if (defined(EXTRUDER_0_AUTO_FAN_PIN) && EXTRUDER_0_AUTO_FAN_PIN > -1) || \
       (defined(EXTRUDER_1_AUTO_FAN_PIN) && EXTRUDER_1_AUTO_FAN_PIN > -1) || \

@@ -53,6 +53,11 @@
 #include "Wire.h"
 #endif
 
+#ifdef MTWLED
+#include "mtwled.h"
+extern int MTWLED_control;
+#endif
+
 #if NUM_SERVOS > 0
 #include "Servo.h"
 #endif
@@ -430,6 +435,11 @@ void setup()
 {
   setup_killpin();
   setup_powerhold();
+  
+  #ifdef MTWLED
+    MTWLEDSetup();
+  #endif
+  
   MYSERIAL.begin(BAUDRATE);
   SERIAL_PROTOCOLLNPGM("start");
   SERIAL_ECHO_START;
@@ -487,6 +497,9 @@ void setup()
 
 void loop()
 {
+#ifdef MTWLED
+  MTWLEDLogic();
+#endif
   if(buflen < (BUFSIZE-1))
     get_command();
   #ifdef SDSUPPORT
@@ -2339,6 +2352,39 @@ void process_commands()
       }
     }
     break;
+
+#ifdef MTWLED
+      case 242: // M242 control for the Makers Tool Works LED controller. See mtwled.h for details
+      {
+        patterncode pattern;
+        pattern.part[0] = 0;
+        long timer = 0;
+        int control = MTWLED_control;
+        pattern.part[1] = 0;
+        pattern.part[2] = 0;
+        pattern.part[3] = 0;
+        if (code_seen('P')) {
+          pattern.part[0] = code_value();
+        }
+        if (code_seen('T')) {
+          timer = (long)code_value();
+        }
+        if (code_seen('C')) {
+          control = code_value();
+        }
+        if (code_seen('R')) {
+          pattern.part[1] = code_value();
+        }
+        if (code_seen('E')) {
+          pattern.part[2] = code_value();
+        }
+        if (code_seen('B')) {
+          pattern.part[3] = code_value();
+        }
+        MTWLEDUpdate(pattern,timer,control);
+      }
+      break;
+#endif
 
 	case 226: // M226 P<pin number> S<pin state>- Wait until the specified pin reaches the state required
 	{
