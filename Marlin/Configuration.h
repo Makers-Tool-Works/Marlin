@@ -172,9 +172,14 @@
 
 // If you are using a preconfigured hotend then you can use one of the value sets by uncommenting it
 // Ultimaker
-    #define  DEFAULT_Kp 22.2
-    #define  DEFAULT_Ki 1.08
-    #define  DEFAULT_Kd 114
+//    #define  DEFAULT_Kp 22.2
+//    #define  DEFAULT_Ki 1.08
+//    #define  DEFAULT_Kd 114
+
+// MM3 E3D V6 E0
+    #define DEFAULT_Kp 18.82
+    #define DEFAULT_Ki 1.47
+    #define DEFAULT_Kd 60.12
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
@@ -396,7 +401,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,1600,460}  // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,1600,460}  // default steps per unit for MendelMax 3
 #define DEFAULT_MAX_FEEDRATE          {500, 500, 5, 25}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {3000,3000,100,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
@@ -642,6 +647,69 @@ const bool Z_MAX_ENDSTOP_INVERTING = true; // set to true to invert the logic of
 //
 //#define SERVO_ENDSTOPS {-1, -1, 0} // Servo index for X, Y, Z. Disable with -1
 //#define SERVO_ENDSTOP_ANGLES {0,0, 0,0, 70,0} // X,Y,Z Axis Extend and Retract angles
+
+/*********************************************************************\
+* MTW LED I2C controller support
+* Sponsored by Makers Tool Works
+**********************************************************************/
+#define MTWLED // uncomment if using Makers Tool Works LED controller
+#ifdef MTWLED
+// patterns
+//                  pattern ID,red,green,blue
+#define mtwled_ready	      10,25,50,0	    // Marlin Ready
+#define mtwled_startup	    10,64,64,64     // Marlin startup
+#define mtwled_temphit      10,40,0,40      // Hotend is at target temp
+#define mtwled_templow	    10,0,0,40       // Hotend heater is slightly lower than target temp
+#define mtwled_temphigh     10,40,0,0	      // Hotend heater is slightly higher than target temp
+#define mtwled_heateroff	  10,40,40,0	    // Hotend heater is off but still hot
+
+// option switches
+#define MTWLED_cool 35                      // The temp at which the hotend is considered cooled down and safe
+#define MTWLED_swing 2                      // how far off before the temperature is not considered 'at temp' in degrees C
+#define MTWLED_heatmode 2                   // animation type for heat=up pattern: 0=solid color 1=chasing 2=wipe 3=scanner
+#define MTWLED_printmode 0                  // animation type during printing: 0=templow/temphit/temphigh 1=XYZ position
+#define MTWLED_endstoptimer 5               // how many seconds to display endstop status
+//#define MTWLED_disableheatup              // uncomment to disable the percentile display as hotend heats up
+#endif
+/*
+A pattern code is 4 bytes of data: the pattern ID plus one byte each for red, green, blue color values.
+A simple way to experiment to find color values you like is to use the M242 command, the serial console
+will display the individual values when it executes a M242 command. You can experiment with patterns and
+RGB color values, then use a code returned by M242 for any default above. The M242 command has these parameters:
+
+M242 P<pattern ID> R<red> E<green> B<blue> T<timer> C<command>
+   pattern ID is the number of the pattern/animation to use
+   R is a value from 0-127 for how red the color will be
+   E is a value from 0-127 for how green the color will be
+   B is a value from 0-127 for how blue the color will be
+      Specifying colors is often optional, any color not given will be either 0 (none) or a default
+      depending on the pattern selected.
+   T is a timer in seconds for how long the pattern will override the default patterns from marlin
+      If marlin events are enabled, the LEDs will resume automatic changed when the time has elapsed
+   C is a command that affects LED options, such as what events marlin sends automatically or display endstop status
+      C0 will enable all marlin LED events
+      C1 will disable general status events (ready, holding temp, etc.)
+      C2 will display endstop status
+      C252 toggles between printmodes
+      C254 toggles serial debug output
+      C255 will disable all marlin LED events
+      The C command parameter is usually used by itself without specifying a pattern ID.
+   Examples:
+      M242 C1 Disable marlin's status events (handy to prevent it overriding while testing)
+      M242 P10 B40 Sets pattern 10 (solid color) blue
+      M242 P10 B50 R50 Sets pattern 10 (solid color) purple
+      M242 P11 R50 T10 Sets a scanning pattern (cylon/KITT) red for at least 10 seconds
+      M242 P13 E40 T10 Sets a chasing pattern green for at least 10 seconds
+   Current pattern IDs are:
+      10 RGB    Solid color
+      11 RGB    Cylon
+      12 RGB    UFO PULSE
+      13 XXX    Color Chase
+      14 XXX    Color Cycle
+      15 RGB    Color Chase Single Led
+      16 RGB    Slow fill then solid
+      17 RGB    Repeating Blink
+*/
 
 #include "Configuration_adv.h"
 #include "thermistortables.h"
