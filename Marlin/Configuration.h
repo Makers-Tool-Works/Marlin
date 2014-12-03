@@ -15,8 +15,8 @@
 // User-specified version info of this build to display in [Pronterface, etc] terminal window during
 // startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
 // build by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H "MendelMax_2-0_RAMBo_1-2_E3D on " __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "Maker's Tool Works edited Jan 7, 2014" // Who made the changes.
+#define STRING_VERSION_CONFIG_H "MendelMax_3-0_RAMBo_1-2_E3D on " __DATE__ " " __TIME__ // build date and time
+#define STRING_CONFIG_H_AUTHOR "Maker's Tool Works edited Dec 2, 2014" // Who made the changes.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -24,8 +24,8 @@
 #define SERIAL_PORT 0
 
 // This determines the communication speed of the printer
-#define BAUDRATE 250000
-//#define BAUDRATE 115200
+//#define BAUDRATE 250000
+#define BAUDRATE 115200
 
 // This enables the serial port associated to the Bluetooth interface
 //#define BTENABLED              // Enable BT interface on AT90USB devices
@@ -74,7 +74,7 @@
 #endif
 
 // Define this to set a custom name for your generic Mendel,
-// #define CUSTOM_MENDEL_NAME "This Mendel"
+#define CUSTOM_MENDEL_NAME "MendelMax 3.0"
 
 // Define this to set a unique identifier for this printer, (Used by some programs to differentiate between machines)
 // You can use an online service to generate a random UUID. (eg http://www.uuidgenerator.net/version4)
@@ -121,8 +121,8 @@
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan & J-Head) (1k pullup)
 
-#define TEMP_SENSOR_0 1
-#define TEMP_SENSOR_1 -1
+#define TEMP_SENSOR_0 5
+#define TEMP_SENSOR_1 5
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 60
 
@@ -147,7 +147,7 @@
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 #define HEATER_0_MAXTEMP 300
-#define HEATER_1_MAXTEMP 275
+#define HEATER_1_MAXTEMP 300
 #define HEATER_2_MAXTEMP 275
 #define BED_MAXTEMP 150
 
